@@ -20,5 +20,10 @@ namespace ReceitasCulinarias.Dal
 		{
 			return _context.Database.GetCollection<Receita>(collection).Find(x => true).ToList();
 		}
+
+		public void Cadastrar(Receita receita)
+		{
+			_context.Database.GetCollection<Receita>(collection).InsertOne(receita);
+		}
 	}
 }

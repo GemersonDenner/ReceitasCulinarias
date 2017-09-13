@@ -16,7 +16,9 @@ namespace ReceitasCulinarias.UI.Controllers
 		}
 		public IActionResult Index()
         {
-            return View();
+			var dal = new ReceitaDal(_context);
+			var itens = dal.Listar();
+			return View(itens);
         }
     }
 }

@@ -27,9 +27,21 @@ namespace ReceitasCulinarias.UI.Controllers
 			return View();
 		}
 
+		[HttpPost]
 		public IActionResult Create(TipoReceita tipoReceita)
 		{
-			return View();
+			if (ModelState.IsValid)
+			{
+				var dal = new TipoReceitaDal(_context);
+				dal.Cadastrar(tipoReceita);
+				ViewBag.Mensagem = "Cadastro realizado com sucesso";
+				return View(null);
+			}
+			else
+			{
+				ViewBag.Mensagem = "Favor verificar os dados inseridos";
+				return View();
+			}
 		}
 	}
 }
